@@ -1,0 +1,39 @@
+<div class="container" ng-controller="loginController">
+    <div class="row">
+        <button type="button" class="btn btn-default" ng-click="display('login')">Login</button>
+        <button type="button" class="btn btn-default" ng-click="display('signup')">Signup</button>
+    </div>
+<form method="POST" name="signup" ng-show="!login && signup">
+    <legend>Signup</legend>
+
+    <div class="form-group">
+        <label for="">Name</label>
+        <input type="text" class="form-control" id="" placeholder="Name" ng-model="payload.name" required>
+    </div>
+    <div class="form-group">
+            <label for="">Email</label>
+            <input type="email" class="form-control" id="" placeholder="Email" ng-model="payload.email" required>
+        </div>
+        <div class="form-group">
+                <label for="">Password</label>
+                <input type="password" class="form-control" id="" placeholder="Password" ng-model="payload.password" required>
+            </div>
+    
+
+    <button type="submit" class="btn btn-primary" ng-click="submit('signup')">Submit</button>
+</form>
+
+<form method="POST" name="login" ng-show="login && !signup">
+        <legend>Login</legend>
+        <div class="form-group">
+                <label for="">Email</label>
+                <input type="email" class="form-control" id="" placeholder="Email" ng-model="payload.email" required>
+            </div>
+            <div class="form-group">
+                    <label for="">Password</label>
+                    <input type="password" class="form-control" id="" placeholder="Password" ng-model="payload.password" required>
+            </div>
+    <button type="submit" class="btn btn-primary" ng-click="submit('login')">Submit</button>
+    </form>
+
+</div>

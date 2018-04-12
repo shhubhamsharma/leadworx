@@ -1,0 +1,90 @@
+<div class="container-fluid" ng-controller="homeController">
+
+  <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+
+    <div class="alert alert-danger" ng-if="error">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true" ng-click="reload()">&times;</button>
+      <strong>Error</strong> {{msg}}
+    </div>
+
+    <div class="row">
+
+      <form class="navbar-form pull-right">
+        <div class="form-group">
+          <label class="sr-only" for="">Search</label>
+
+          <div class="input-group">
+            <input type="text" ng-model="searchText" placeholder="Search">
+          </div>
+        </div>
+      </form>
+
+
+    </div>
+
+
+    <table class="table table-hover">
+      <thead ng-if="!error">
+        <tr>
+          <th> Title</th>
+          <th> ISBN</th>
+          <th> Author</th>
+          <th> Publication Date</th>
+          <th> Action</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr ng-show="!show">
+          <td>
+            <span class="glyphicon glyphicon-plus" ng-click="showForm()" aria-hidden="true"></span>
+          </td>
+        </tr>
+        <tr ng-show="show">
+          <td>
+            <span class="glyphicon glyphicon-minus" ng-click="showForm()" aria-hidden="true"></span>
+          </td>
+        </tr>
+      </tfoot>
+      <tbody ng-if="!error">
+        <tr ng-repeat="book in books | filter:searchText">
+          <td>{{book.title}}</td>
+          <td>{{book.isbn}}</td>
+          <td>{{book.author}}</td>
+          <td>{{book.pub_date | date:'MMMM dd, yyyy'}}</td>
+          <td>
+            <span class="glyphicon glyphicon-remove" ng-click="delete(book)" aria-hidden="true"></span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
+    <form class="form-inline" role="form" ng-show="show">
+
+      <div class="form-group">
+        <label class="sr-only" for="">Title</label>
+        <input type="text" class="form-control" id="" placeholder="Title" ng-model="addBook.title">
+      </div>
+      <div class="form-group">
+        <label class="sr-only" for="">Isbn</label>
+        <input type="text" class="form-control" id="" placeholder="ISBN" ng-model="addBook.isbn">
+      </div>
+      <div class="form-group">
+        <label class="sr-only" for="">Author</label>
+        <input type="text" class="form-control" id="" placeholder="Author" ng-model="addBook.author">
+      </div>
+      <div class="form-group">
+        <label class="sr-only" for="">Publication Date</label>
+        <input type="date" class="form-control" id="" placeholder="Publication Date" ng-model="addBook.pub_date">
+      </div>
+
+
+      <button type="submit" class="btn btn-primary" ng-click="add()">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+      </button>
+    </form>
+
+
+  </div>
+
+</div>
