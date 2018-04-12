@@ -54,7 +54,6 @@ aop.factory('Service', Service);
         }
         return service;
 
-        ////////////////transferUtility
         function exposedFn() { }
     }
 })();
