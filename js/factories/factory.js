@@ -1,9 +1,6 @@
 (function() {
     'use strict';
 aop.factory('Service', Service);
-    var baseURL="https://uat-pr-aop.bdt.kpit.com/"
-    // var baseURL="http://localhost:2000/";
-
     Service.$inject = ["$http","$rootScope"];
     function Service($http,$rootScope) {
         var API="http://localhost:3100/"
